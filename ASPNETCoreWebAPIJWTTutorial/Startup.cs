@@ -29,6 +29,8 @@ namespace ASPNETCoreWebAPIJWTTutorial
         {
             services.ConfigureCors();
             services.ConfigureSqlContext(Configuration);
+            services.AddAuthentication();
+            services.ConfigureIdentity();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -50,6 +52,7 @@ namespace ASPNETCoreWebAPIJWTTutorial
             app.UseCors("CorsPolicy");
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
