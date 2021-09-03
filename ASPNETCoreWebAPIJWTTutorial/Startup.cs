@@ -27,6 +27,7 @@ namespace ASPNETCoreWebAPIJWTTutorial
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureCors();
             services.ConfigureSqlContext(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -46,7 +47,7 @@ namespace ASPNETCoreWebAPIJWTTutorial
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("CorsPolicy");
             app.UseRouting();
 
             app.UseAuthorization();
