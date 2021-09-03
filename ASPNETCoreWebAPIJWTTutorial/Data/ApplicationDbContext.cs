@@ -1,4 +1,5 @@
-﻿using ASPNETCoreWebAPIJWTTutorial.Models;
+﻿using ASPNETCoreWebAPIJWTTutorial.Configuration;
+using ASPNETCoreWebAPIJWTTutorial.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,6 +17,12 @@ namespace ASPNETCoreWebAPIJWTTutorial.Data
 
         }
 
-        
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfiguration(new RolesConfiguration());
+        }
+
+
     }
 }
