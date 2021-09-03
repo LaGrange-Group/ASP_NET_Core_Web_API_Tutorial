@@ -31,6 +31,7 @@ namespace ASPNETCoreWebAPIJWTTutorial
             services.ConfigureSqlContext(Configuration);
             services.AddAuthentication();
             services.ConfigureIdentity();
+            services.ConfigureJWT(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
